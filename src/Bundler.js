@@ -87,7 +87,7 @@ class Bundler extends EventEmitter {
       logLevel: isNaN(options.logLevel) ? 3 : options.logLevel,
       mainFile: this.mainFile,
       hmrPort: options.hmrPort || 0,
-      rootDir: Path.dirname(this.mainFile),
+      rootDir: options.rootDir ? Path.resolve(options.rootDir) : Path.dirname(this.mainFile),
       sourceMaps:
         typeof options.sourceMaps === 'boolean' ? options.sourceMaps : true,
       hmrHostname:
