@@ -30,6 +30,10 @@ program
     'automatically open in specified browser, defaults to default browser'
   )
   .option(
+    '-r, --root-dir <path>',
+    'set the root directory to use for absolute paths'
+  )
+  .option(
     '-d, --out-dir <path>',
     'set the output directory. defaults to "dist"'
   )
