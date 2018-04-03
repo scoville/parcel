@@ -88,7 +88,10 @@ class Asset {
     }
 
     const parsed = URL.parse(url);
-    const resolved = path.resolve(path.dirname(from), parsed.pathname);
+    let resolved = path.resolve(path.dirname(from), parsed.pathname);
+    if (parsed.pathname[0] === '/') {
+      resolved = path.resolve(this.options.rootDir, resolved.slice(1));
+    }
     this.addDependency(
       './' + path.relative(path.dirname(this.name), resolved),
       Object.assign({dynamic: true}, opts)
